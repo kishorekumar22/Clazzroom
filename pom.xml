@@ -6,9 +6,8 @@
 	<groupId>com.duocorp</groupId>
 	<artifactId>myclazz</artifactId>
 	<version>1.0.0</version>
-	<packaging>jar</packaging>
-
-	<name>MyClazz</name>
+	<packaging>pom</packaging>
+	<name>myclazz</name>
 	<description>Collaborative classroom for student,helps managing their schedules,Assignments etc. </description>
 	<parent>
 		<groupId>org.springframework.boot</groupId>
