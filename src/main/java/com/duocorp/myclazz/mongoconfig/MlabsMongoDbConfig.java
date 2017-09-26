@@ -5,6 +5,8 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.data.mongodb.MongoDbFactory;
 import org.springframework.data.mongodb.core.SimpleMongoDbFactory;
 
+import com.mongodb.MongoClientOptions;
+import com.mongodb.MongoClientOptions.Builder;
 import com.mongodb.MongoClientURI;
 
 /**
@@ -24,7 +26,9 @@ public class MlabsMongoDbConfig implements MongoDbFactoryConfig {
 	 */
 	@Override
 	public MongoDbFactory mongoDbFactory() throws Exception {
-		return new SimpleMongoDbFactory(new MongoClientURI(mongoURI));
+		Builder options = new MongoClientOptions.Builder().socketTimeout(60000).connectTimeout(60000)
+				.maxWaitTime(60000);
+		return new SimpleMongoDbFactory(new MongoClientURI(mongoURI, options));
 
 	}
 }
