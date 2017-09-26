@@ -1,5 +1,6 @@
 package com.duocorp.myclazz.mongoconfig;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.mongodb.MongoDbFactory;
 import org.springframework.data.mongodb.core.SimpleMongoDbFactory;
@@ -10,7 +11,10 @@ import com.mongodb.MongoClientURI;
  * The Class OpenshiftMongoDbConfig.
  */
 @Configuration
-public class OpenshiftMongoDbConfig implements MongoDbFactoryConfig {
+public class MlabsMongoDbConfig implements MongoDbFactoryConfig {
+
+	@Value("${mlab.mongo.uri}")
+	private String mongoURI;
 
 	/*
 	 * (non-Javadoc)
@@ -20,7 +24,7 @@ public class OpenshiftMongoDbConfig implements MongoDbFactoryConfig {
 	 */
 	@Override
 	public MongoDbFactory mongoDbFactory() throws Exception {
-		return new SimpleMongoDbFactory(new MongoClientURI(System.getenv("CLAZZRUM_MONGODB_URI")));
+		return new SimpleMongoDbFactory(new MongoClientURI(mongoURI));
 
 	}
 }
